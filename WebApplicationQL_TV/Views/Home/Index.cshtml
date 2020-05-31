@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div><h1> Quản Lý Thư Viện </h1></div>
+<div>
+    <table class="table table-bordered">
+        <tbody>
+            <div>
+                @Html.ActionLink("Quản Lý Sách", "ThongTinSach", "Sach")
+            </div>
+            <div>
+                @Html.ActionLink("Quản Lý Sách Đã Mượn", "ThongTinSach", "Sach")
+            </div>
+        </tbody>
+    </table>
+</div>
