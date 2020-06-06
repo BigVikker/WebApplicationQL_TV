@@ -213,6 +213,7 @@
     <Content Include="Views\NhanVien\ThongTinNhanVienChuaVietDonHang.cshtml" />
     <Content Include="Views\Sach\Create.cshtml" />
     <Content Include="Views\DonHang\Delete.cshtml" />
+    <Content Include="Views\DonHang\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

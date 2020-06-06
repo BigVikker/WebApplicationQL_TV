@@ -14,7 +14,8 @@
         public string maHoaDon { get; set; }
         [StringLength(20)]
         public string maPhieuYeuCau { get; set; }
-
+        [StringLength(20)]
+        public string maThuVien { get; set; }
         public bool? TrangThai { get; set; }
 
         [Column(TypeName = "date")]

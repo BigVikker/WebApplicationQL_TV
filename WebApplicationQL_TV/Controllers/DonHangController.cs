@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PagedList;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebApplicationQL_TV.Models;
-using PagedList.Mvc;
-using PagedList;
 namespace WebApplicationQL_TV.Controllers
 {
     public class DonHangController : Controller
@@ -14,7 +10,7 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult ThongTinTatCaDonHang(int? page, string sortBy, string search)
         {
             Model1 db = new Model1();
-            var query = "select HDM.maHoaDon ,HDM.maPhieuYeuCau,TrangThai,NgayMuon," +
+            var query = "select HDM.maHoaDon ,HDM.maPhieuYeuCau,TrangThai,NgayMuon,TV.maThuVien," +
                 "tenThuVien,TTV.maThe,maKH,tenKH,NV.maNV,NV.tenNV,S.maSach,tenSach,soLuong " +
                 "from HoaDonMuon HDM  inner join PhieuYeuCau PYC ON HDM.maPhieuYeuCau = PYC.maPhieuYeuCau " +
                 "inner join ThuVien TV ON PYC.maThuVien = TV.maThuVien " +
@@ -43,7 +39,7 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult ThongTinDonHangChuaTra(int? page, string sortBy, string search)
         {
             Model1 db = new Model1();
-            var query = "select HDM.maHoaDon ,HDM.maPhieuYeuCau,TrangThai,NgayMuon," +
+            var query = "select HDM.maHoaDon ,HDM.maPhieuYeuCau,TrangThai,NgayMuon,TV.maThuVien," +
                 "tenThuVien,TTV.maThe,maKH,tenKH,NV.maNV,NV.tenNV,S.maSach,tenSach,soLuong " +
                 "from HoaDonMuon HDM  inner join PhieuYeuCau PYC ON HDM.maPhieuYeuCau = PYC.maPhieuYeuCau " +
                 "inner join ThuVien TV ON PYC.maThuVien = TV.maThuVien " +
@@ -73,6 +69,35 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult Create(string id)
         {
             return View();
+        }
+        [HttpPost ,ActionName("Create")]
+        public ActionResult Create(BangThongTinTatCaHoaDon thongTinHoaDon)
+        {
+            Model1 db = new Model1();
+            
+            var obj_Found = db.PhieuYeuCaus.Find(thongTinHoaDon.maPhieuYeuCau);
+            if (obj_Found != null) return View();
+            var obj_Found_1 = db.Saches.Find(thongTinHoaDon.maSach);
+            if (obj_Found_1 == null) return View();
+            var obj_Found_2 = db.TheThuViens.Find(thongTinHoaDon.maThe);
+            if (obj_Found_2 == null) return View();
+            var obj_Found_3 = db.NhanViens.Find(thongTinHoaDon.maNV);
+            if (obj_Found_3 == null) return View();
+            var obj_Found_4 = db.HoaDonMuons.Find(thongTinHoaDon.maHoaDon);
+            if (obj_Found_4 != null) return View();
+            var obj_Found_5 = db.TheThuViens.Find(thongTinHoaDon.maThuVien);
+            if (obj_Found_5 != null) return View();
+
+            db.Database.ExecuteSqlCommand("insert into YeuCauMuon(maSach, maPhieuYeuCau ,soLuong) " +
+                "values ("+ thongTinHoaDon.maSach+" ,"+ thongTinHoaDon.maPhieuYeuCau +" " +
+                ", " + thongTinHoaDon.soLuong +")");
+            db.Database.ExecuteSqlCommand("insert into PhieuYeuCau(maPhieuYeuCau,maThe,maNV,maThuVien) " +
+                "values ( " +thongTinHoaDon.maPhieuYeuCau +" ,"+thongTinHoaDon.maThe + "," 
+                +thongTinHoaDon.maNV +","+ thongTinHoaDon.maThuVien +")");
+            db.Database.ExecuteSqlCommand("insert into HoaDonMuon(maPhieuYeuCau,maHoaDon,TrangThai,ngayMuon) " +
+                "values ({0},{1},{2},{3})", thongTinHoaDon.maPhieuYeuCau,thongTinHoaDon.maHoaDon,thongTinHoaDon.TrangThai,thongTinHoaDon.NgayMuon);
+            db.SaveChanges();
+            return RedirectToAction("ThongTinTatCaDonHang");
         }
         public ActionResult Delete(string id)
         {
