@@ -21,7 +21,7 @@
     <div class="card-body">
         <table class="table table-bordered" data-page-size="5">
             <thead>
-                @using (Html.BeginForm("ThongTinSach", "Sach", FormMethod.Get ))
+                @using (Html.BeginForm("ThongTinSach", "Sach", FormMethod.Get  ))
                 {
                     <tr>Tìm Kiếm Theo Đầu Sách : </tr>
                     <input type="text" name="search" value="@ViewBag.Current_search" placeholder="ten sach can tim" />
@@ -124,7 +124,7 @@
                 <tr>
                     Tổng số sách đang được quán lý : @soSach
                 </tr>
-                @Html.PagedListPager(Model, page => Url.Action("ThongTinSach", "Sach", new { page } ))
+                @Html.PagedListPager(Model, page => Url.Action("ThongTinSach", "Sach", new { page , sortBy = ViewBag.Current_sortBy , search = ViewBag.Current_search}  ))
             }
         </thead>
     </div>

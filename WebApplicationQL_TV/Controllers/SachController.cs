@@ -72,13 +72,13 @@ namespace WebApplicationQL_TV.Controllers
             return View(sach);
         }
         [HttpPost, ActionName("Create")]
-        public ActionResult Create(Sach sach)
+        public ActionResult CreateConFirm(Sach sach)
         {
             Model1 db = new Model1();
             var sach_finder = db.Saches.Find(sach.maSach);
             if (sach_finder != null)
             {
-                sach_finder.tenSach = sach.tenSach;
+                db.Saches.Add(sach_finder);
                 db.SaveChanges();
                 return RedirectToAction("ThongTinSach");
             }
@@ -91,11 +91,22 @@ namespace WebApplicationQL_TV.Controllers
             
         }
         [HttpPost, ActionName("Delete")]
-        public ActionResult Delete(Sach sach)
+        public ActionResult DeleteConfirmed(string id)
         {
             Model1 db = new Model1();
-            Sach delete_sach = db.Saches.Find(sach.maSach);
-            
+            Sach delete_sach = db.Saches.SqlQuery("select * from Sach where ( maSach in " +
+                "(select maSach from YeuCauMuon where maPhieuYeuCau in " +
+                "(select maPhieuYeuCau from PhieuYeuCau where maPhieuYeuCau in " +
+                "(select maPhieuYeuCau from HoaDonMuon where trangThai = 1))) " +
+                " and maSach = '"+id+ "') " +
+                "OR (maSach not in (select maSach from YeuCauMuon) " +
+                "and maSach = '"+id+ "')").SingleOrDefault();
+            if (delete_sach == null) return RedirectToAction("ThongTinSach");
+            else
+            {
+                db.Database.ExecuteSqlCommand("delete from Sach where maSach = '"+id+"'");
+                db.SaveChanges();
+            }
             return RedirectToAction("ThongTinSach");
         }
         [HttpPost, ActionName("Edit")]

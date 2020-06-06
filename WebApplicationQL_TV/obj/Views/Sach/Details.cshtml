@@ -1,0 +1,90 @@
+﻿@model WebApplicationQL_TV.Models.Sach
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sach</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.namXuatBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.namXuatBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.giaSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giaSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ghiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ghiChu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maNgonNgu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maNgonNgu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maLoaiSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maLoaiSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maNhaXuatBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maNhaXuatBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maTacGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maTacGia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit","Sach", new {id = Model.maSach },new { @class="btn btn-default"}) |
+    @Html.ActionLink("Back to List", "ThongTinSach" , "Sach",new { @class="btn btn-default"})
+</p>

@@ -1,0 +1,104 @@
+﻿@model IPagedList<WebApplicationQL_TV.Models.BangThongTinTatCaHoaDon>
+@using PagedList.Mvc;
+@using PagedList;
+@using WebApplicationQL_TV.Models;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "BangTatCaDonHang";
+}
+
+<body>
+    <div style="font-size:30px"><strong> Bảng Thông Tin Chi Tiết Về Các Hóa Đơn Đang Được Quản Lý </strong></div>
+    <br />
+
+    <br />
+    <div class="card-body">
+        <table class="table table-bordered" data-page-size="5">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().maHoaDon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().maSach)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().tenSach)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().soLuong)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().TrangThai)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().NgayMuon)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.First().tenKH)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().tenThuVien)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.First().tenNV)
+                </th>
+                <th>
+                    Dich Vu Khac
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.maHoaDon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.maSach)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tenSach)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.soLuong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrangThai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayMuon)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tenKH)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tenThuVien)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tenNV)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.maHoaDon }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.maHoaDon }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.maHoaDon })
+                    </td>
+                </tr>
+            }
+        </table>
+        @{
+            Model1 db = new Model1();
+            var tong_DonHang = db.BangThongTinTatCaHoaDons.Count();
+        }
+        Số Hóa Đơn Đang Được Quản Lý Là : @tong_DonHang
+        @Html.PagedListPager(Model, page => Url.Action("BangTatCaDonHang", "DonHang", new { page }))
+
+    </div>
+</body>

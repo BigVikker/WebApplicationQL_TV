@@ -5,6 +5,7 @@ namespace WebApplicationQL_TV.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("Sach")]
     public partial class Sach
@@ -33,15 +34,18 @@ namespace WebApplicationQL_TV.Models
 
         [StringLength(20)]
         public string maNgonNgu { get; set; }
+        public IEnumerable<SelectListItem> cacMaNgonNgu { get; set; }
 
         [StringLength(20)]
         public string maLoaiSach { get; set; }
+        public IEnumerable<SelectListItem> cacMaLoaiSach { get; set; }
 
         [StringLength(20)]
         public string maNhaXuatBan { get; set; }
-
+        public IEnumerable<SelectListItem> cacMaNhaXuatBan { get; set; }
         [StringLength(20)]
         public string maTacGia { get; set; }
+        public IEnumerable<SelectListItem> cacMaTacGia { get; set; }
 
         public virtual LoaiSach LoaiSach { get; set; }
 

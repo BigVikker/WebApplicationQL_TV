@@ -136,12 +136,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\SachController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BangTatCaNhanVienPhucVu.cs" />
     <Compile Include="Models\BangThongTinChiTietCuaSach.cs" />
+    <Compile Include="Models\BangThongTinTatCaHoaDon.cs" />
     <Compile Include="Models\BoPhan.cs" />
     <Compile Include="Models\HoaDonMuon.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -199,11 +201,21 @@
     <Content Include="Views\Sach\Edit.cshtml" />
     <Content Include="Views\Sach\Delete.cshtml" />
     <Content Include="Views\Sach\ThongTinSachDangMuon.cshtml" />
+    <Content Include="Views\DonHang\ThongTinTatCaDonHang.cshtml" />
+    <Content Include="Views\DonHang\ThongTinDonHangChuaTra.cshtml" />
+    <Content Include="Views\DonHang\Details.cshtml" />
+    <Content Include="Views\DonHang\Edit.cshtml" />
+    <Content Include="Views\NhanVien\Create.cshtml" />
+    <Content Include="Views\NhanVien\Delete.cshtml" />
+    <Content Include="Views\NhanVien\Details.cshtml" />
+    <Content Include="Views\NhanVien\Edit.cshtml" />
+    <Content Include="Views\NhanVien\ThongTinNhanVien.cshtml" />
+    <Content Include="Views\NhanVien\ThongTinNhanVienChuaVietDonHang.cshtml" />
     <Content Include="Views\Sach\Create.cshtml" />
+    <Content Include="Views\DonHang\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DonHang\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

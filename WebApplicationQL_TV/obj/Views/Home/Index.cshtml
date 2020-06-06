@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div><h1> Quản Lý Thư Viện </h1></div>
+<div>
+    <h3>Quản Lý Sách : </h3>
+    <ul class="table-bordered">
+        <li>
+            @Html.ActionLink("Quản Lý Sách", "ThongTinSach", "Sach")
+        </li>
+        <li>
+            @Html.ActionLink("Quản Lý Sách Đã Mượn", "ThongTinSach", "Sach")
+        </li>
+    </ul>
+
+
+    <h3>Quản Lý Hóa Đơn : </h3>
+    <ul class="table-bordered">
+        <li>
+            @Html.ActionLink("Quản Lý Tất Cả Hóa Đơn", "BangTatCaDonHang", "DonHang")
+        </li>
+        <li>
+            @Html.ActionLink("Quản Lý Các Sách Chưa Trả", "BangHoaDonChuaTra", "DonHang")
+        </li>
+    </ul>
+
+    <h3>Quản Lý Nhân Viên : </h3>
+    <ul class="table-bordered">
+        <li>
+            Quản Lý Nhân Viên
+        </li>
+    </ul>
+</div>

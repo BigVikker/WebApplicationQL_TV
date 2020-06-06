@@ -4,14 +4,31 @@
 
 <div><h1> Quản Lý Thư Viện </h1></div>
 <div>
-    <table class="table table-bordered">
-        <tbody>
-            <div>
-                @Html.ActionLink("Quản Lý Sách", "ThongTinSach", "Sach")
-            </div>
-            <div>
-                @Html.ActionLink("Quản Lý Sách Đã Mượn", "ThongTinSach", "Sach")
-            </div>
-        </tbody>
-    </table>
+    <ul class="list-group">
+        <h2>Quản Lý Sách </h2>
+        <li>
+            @Html.ActionLink("Quản Lý Tất Cả Thông Tin Sách","ThongTinSach","Sach")
+        </li>
+        <li>
+            @Html.ActionLink("Quản Lý Sách Chưa Được Mượn","ThongTinSachDangMuon","Sach")
+        </li>
+    </ul>
+    <ul class="list-group">
+        <h2>Quản Lý Hóa Đơn</h2>
+        <li>
+            @Html.ActionLink("Quản Lý Tất Cả Hóa Đơn","ThongTinTatCaDonHang","DonHang")
+        </li>
+        <li>
+            @Html.ActionLink("Quản Lý Tất Cả Hóa Đơn Chưa trả","ThongTinDonHangChuaTra","DonHang")
+        </li>
+    </ul>
+    <ul class="list-group">
+        <h2>Quản Lý Nhân Viên</h2> 
+    </ul>
+    <li>
+        @Html.ActionLink("Quản Lý Tất Cả Nhân Viên", "ThongTinNhanVien", "NhanVien")
+    </li>
+    <li>
+        @Html.ActionLink("Quản Lý Tất Cả Nhân Viên Chưa Viết Đơn Hàng ", "ThongTinNhanVienChuaVietDonHang", "NhanVien")
+    </li>
 </div>

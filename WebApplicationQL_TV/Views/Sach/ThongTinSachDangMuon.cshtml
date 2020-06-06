@@ -7,8 +7,24 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("ThongTinSach", "Sach", FormMethod.Get))
+{
+    <tr>Tìm Kiếm Theo Đầu Sách : </tr>
+    <input type="text" name="search" value="@ViewBag.Current_search" placeholder="ten sach can tim" />
+    <tr>Sắp Xếp Theo : </tr>
+    <select name="sortBy">
+        <option value="@ViewBag.Current_sortBy">@ViewBag.Current_sortBy</option>
+        <option value="maSach">maSach</option>
+        <option value="tenSach">tenSach</option>
+    </select>
+    <input class="btn btn-default" type="submit" value="Tìm Kiếm" />
+}
+
 <table class="table table-bordered">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maSach)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.First().tenSach)
         </th>
@@ -41,40 +57,43 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.tenSach)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.soTrang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.namXuatBan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.giaSach)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ghiChu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.maNgonNgu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.maLoaiSach)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.maNhaXuatBan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.maTacGia)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.maSach }) |
-                @Html.ActionLink("Details", "Details", new { id = item.maSach }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.maSach })
-            </td>
-        </tr>
-    }
-    @Html.PagedListPager(Model, page => Url.Action("ThongTinSachDangMuon", "Sach", new { page }))
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.maSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tenSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.soTrang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.namXuatBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.giaSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ghiChu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maNgonNgu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maLoaiSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maNhaXuatBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maTacGia)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.maSach }) |
+        @Html.ActionLink("Details", "Details", new { id = item.maSach }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.maSach })
+    </td>
+</tr>
+}
 </table>
+@Html.PagedListPager(Model, page => Url.Action("ThongTinSachDangMuon", "Sach", new { page, sortBy = ViewBag.Current_sortBy, search = ViewBag.Current_search }))

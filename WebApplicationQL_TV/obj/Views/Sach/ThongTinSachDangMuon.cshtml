@@ -1,0 +1,80 @@
+﻿@model IPagedList<WebApplicationQL_TV.Models.Sach>
+@using PagedList;
+@using PagedList.Mvc;
+
+<h1 class="media-middle">Thông Tin Sách Đang Mượn</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().tenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().soTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().namXuatBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().giaSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ghiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maNgonNgu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maLoaiSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maNhaXuatBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maTacGia)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soTrang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.namXuatBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.giaSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ghiChu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maNgonNgu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maLoaiSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maNhaXuatBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maTacGia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.maSach }) |
+                @Html.ActionLink("Details", "Details", new { id = item.maSach }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.maSach })
+            </td>
+        </tr>
+    }
+    @Html.PagedListPager(Model, page => Url.Action("ThongTinSachDangMuon", "Sach", new { page }))
+</table>

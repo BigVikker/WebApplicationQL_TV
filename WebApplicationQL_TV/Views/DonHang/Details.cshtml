@@ -1,0 +1,105 @@
+﻿@model WebApplicationQL_TV.Models.BangThongTinTatCaHoaDon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BangThongTinTatCaHoaDon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayMuon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayMuon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenThuVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenThuVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maThe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maThe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maNV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maNV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenNV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenNV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuong)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", "DonHang", new { id = Model.maHoaDon }, new { @class = "btn btn-default" })
+</p>
