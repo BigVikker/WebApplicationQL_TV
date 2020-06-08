@@ -170,3 +170,5 @@ D:\VietVo\TTCSDL\WebApplicationQL_TV(1.0.1)\WebApplicationQL_TV\obj\Debug\WebApp
 D:\VietVo\TTCSDL\WebApplicationQL_TV(1.0.1)\WebApplicationQL_TV\obj\Debug\WebApplicationQL_TV.csproj.CopyComplete
 D:\VietVo\TTCSDL\WebApplicationQL_TV(1.0.1)\WebApplicationQL_TV\obj\Debug\WebApplicationQL_TV.dll
 D:\VietVo\TTCSDL\WebApplicationQL_TV(1.0.1)\WebApplicationQL_TV\obj\Debug\WebApplicationQL_TV.pdb
+D:\VietVo\TTCSDL\WebApplicationQL_TV(1.0.1)\WebApplicationQL_TV\obj\Debug\WebApplicationQL_TV.Migrations.maThuVien.resources
+D:\VietVo\TTCSDL\WebApplicationQL_TV(1.0.1)\WebApplicationQL_TV\obj\Debug\WebApplicationQL_TV.csproj.GenerateResource.cache

@@ -33,6 +33,7 @@ namespace WebApplicationQL_TV.Controllers
             }
 
         }
+        
         public ActionResult Create()
         {
             return View();

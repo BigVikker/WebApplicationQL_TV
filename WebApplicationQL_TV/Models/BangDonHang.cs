@@ -1,13 +1,16 @@
-﻿namespace WebApplicationQL_TV.Models
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
 
-    [Table("BangThongTinTatCaHoaDon")]
-    public partial class BangThongTinTatCaHoaDon
+namespace WebApplicationQL_TV.Models
+{
+    public class BangDonHang
     {
         [Key]
         [StringLength(20)]

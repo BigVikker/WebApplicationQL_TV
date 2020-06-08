@@ -11,10 +11,10 @@ namespace WebApplicationQL_TV.Controllers
     public class NhanVienController : Controller
     {
         // GET: NhanVien
-        public ActionResult ThongTinNhanVien(int? page, string search,string sortBy)
+        public ActionResult ThongTinNhanVien(int? page, string search, string sortBy)
         {
             Model1 db = new Model1();
-            List<NhanVien> list = db.NhanViens.SqlQuery("Select * from NhanVien").ToList();
+            List<NhanVien> list = db.NhanViens.ToList();
             if (search != null)
             {
                 ViewBag.Current_search = search;
@@ -54,9 +54,24 @@ namespace WebApplicationQL_TV.Controllers
             }
             return View(list.ToPagedList(page ?? 1, 5));
         }
-        public ActionResult Create ()
+        public ActionResult Create()
         {
             return View();
+        }
+        [HttpPost , ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateConFirm(NhanVien nhanVien)
+        {
+            Model1 db = new Model1();
+            var NhanVien_Found = db.NhanViens.SqlQuery("select * from NhanVien Where maNV = '{0}'", nhanVien.maNV).SingleOrDefault();
+            if (NhanVien_Found != null) return RedirectToAction("ThongTinNhanVien");
+            else
+            {
+                db.NhanViens.Add(nhanVien);
+                db.SaveChanges();
+            }
+            
+            return RedirectToAction("ThongTinNhanVien");
         }
         public ActionResult Details(string id)
         {
@@ -80,34 +95,17 @@ namespace WebApplicationQL_TV.Controllers
             NhanVien obj = db.NhanViens.Find(id);
             return View(obj);
         }
-        [HttpPost, ActionName("Create")]
-
-        public ActionResult Create(NhanVien nhanVien)
-        {
-            Model1 db = new Model1();
-            var sach_finder = db.NhanViens.Find(nhanVien.maNV);
-            if (sach_finder != null)
-            {
-                return RedirectToAction("ThongTinNhanVien");
-            }
-            else
-            {
-                db.NhanViens.Add(nhanVien);
-                db.SaveChanges();
-                return RedirectToAction("ThongTinNhanVien");
-            }
-
-        }
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
             Model1 db = new Model1();
-            var NhanVien = db.NhanViens.SqlQuery("Select * from NhanVien where " +
+            var NhanVien_found = db.NhanViens.SqlQuery("Select * from NhanVien where " +
                 "maNV not in (select maNV from PhieuYeuCau) and" +
                 " maNV = '"+id+"'").SingleOrDefault();
-            if (NhanVien == null)
-                return RedirectToAction("ThongTinNhanVien");
+            if (NhanVien_found == null)
+                return View();
             else
             {
                 db.Database.ExecuteSqlCommand("delete from NhanVien where maNV = '"+ id +"'");

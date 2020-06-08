@@ -141,8 +141,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BangTatCaNhanVienPhucVu.cs" />
-    <Compile Include="Models\BangThongTinChiTietCuaSach.cs" />
+    <Compile Include="Migrations\202006071808547_maThuVien.cs" />
+    <Compile Include="Migrations\202006071808547_maThuVien.Designer.cs">
+      <DependentUpon>202006071808547_maThuVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BangDonHang.cs" />
     <Compile Include="Models\BangThongTinTatCaHoaDon.cs" />
     <Compile Include="Models\BoPhan.cs" />
     <Compile Include="Models\HoaDonMuon.cs" />
@@ -203,8 +207,6 @@
     <Content Include="Views\Sach\ThongTinSachDangMuon.cshtml" />
     <Content Include="Views\DonHang\ThongTinTatCaDonHang.cshtml" />
     <Content Include="Views\DonHang\ThongTinDonHangChuaTra.cshtml" />
-    <Content Include="Views\DonHang\Details.cshtml" />
-    <Content Include="Views\DonHang\Edit.cshtml" />
     <Content Include="Views\NhanVien\Create.cshtml" />
     <Content Include="Views\NhanVien\Delete.cshtml" />
     <Content Include="Views\NhanVien\Details.cshtml" />
@@ -212,8 +214,10 @@
     <Content Include="Views\NhanVien\ThongTinNhanVien.cshtml" />
     <Content Include="Views\NhanVien\ThongTinNhanVienChuaVietDonHang.cshtml" />
     <Content Include="Views\Sach\Create.cshtml" />
-    <Content Include="Views\DonHang\Delete.cshtml" />
     <Content Include="Views\DonHang\Create.cshtml" />
+    <Content Include="Views\DonHang\Delete.cshtml" />
+    <Content Include="Views\DonHang\Details.cshtml" />
+    <Content Include="Views\DonHang\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -230,6 +234,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006071808547_maThuVien.resx">
+      <DependentUpon>202006071808547_maThuVien.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,6 +4,19 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
+
+<div>
+    <h2>
+        <strong>
+            Bảng Thông Tin Về Các Hóa Đơn Đang Được Quản Lý
+        </strong>
+    </h2>
+</div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <div>
     @using (Html.BeginForm("ThongTinTatCaDonHang", "DonHang", FormMethod.Get))
     {
@@ -20,9 +33,6 @@
 
 </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table table-bordered">
     <tr>
         <th>
@@ -40,11 +50,11 @@
         <th>
             @Html.DisplayNameFor(model => model.First().tenKH)
         </th>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.First().tenNV)
         </th>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.First().tenSach)
         </th>
@@ -71,15 +81,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.tenThuVien)
             </td>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.tenKH)
             </td>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.tenNV)
             </td>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.tenSach)
             </td>
@@ -95,4 +105,4 @@
     }
 
 </table>
-@Html.PagedListPager(Model, page => Url.Action("ThongTinTatCaDonHang", "DonHang", new { page, seach = ViewBag.Current_search , sortBy = ViewBag.Current_sortBy  }))
+@Html.PagedListPager(Model, page => Url.Action("ThongTinTatCaDonHang", "DonHang", new { page, seach = ViewBag.Current_search, sortBy = ViewBag.Current_sortBy }))

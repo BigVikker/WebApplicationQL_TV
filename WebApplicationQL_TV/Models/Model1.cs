@@ -25,10 +25,8 @@ namespace WebApplicationQL_TV.Models
         public virtual DbSet<TheThuVien> TheThuViens { get; set; }
         public virtual DbSet<ThuVien> ThuViens { get; set; }
         public virtual DbSet<YeuCauMuon> YeuCauMuons { get; set; }
-        public virtual DbSet<BangTatCaNhanVienPhucVu> BangTatCaNhanVienPhucVus { get; set; }
         public virtual DbSet<BangThongTinTatCaHoaDon> BangThongTinTatCaHoaDons { get; set; }
-        public virtual DbSet<BangThongTinChiTietCuaSach> BangThongTinChiTietCuaSaches { get; set; }
-
+        public virtual DbSet<BangDonHang> BangDonHangs { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PhieuYeuCau>()

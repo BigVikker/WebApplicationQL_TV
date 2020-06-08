@@ -11,6 +11,22 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.maPhieuYeuCau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maPhieuYeuCau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maThuVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maThuVien)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.TrangThai)
         </dt>
 
@@ -101,5 +117,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", "DonHang", new { id = Model.maHoaDon }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maHoaDon  } , new { @class = "btn btn-default"}) 
 </p>

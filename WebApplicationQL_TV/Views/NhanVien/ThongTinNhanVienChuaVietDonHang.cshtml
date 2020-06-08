@@ -5,11 +5,13 @@
     ViewBag.Title = "ThongTinNhanVienChuaVietDonHang";
 }
 
-<h2>ThongTinNhanVienChuaVietDonHang</h2>
+<h2><strong>Thông Tin Nhân Viên Chưa Viết Đơn Hàng</strong></h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
 @using (Html.BeginForm("ThongTinNhanVienChuaVietDonHang", "NhanVien", FormMethod.Get))
 {
     <tr>Tìm Kiếm Theo Mã Nhân Viên : </tr>
