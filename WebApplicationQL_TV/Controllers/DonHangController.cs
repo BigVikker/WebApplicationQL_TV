@@ -23,19 +23,21 @@ namespace WebApplicationQL_TV.Controllers
                 "inner join KhachHang KH ON KH.maThe = TTV.maThe " +
                 "inner join NhanVien NV ON NV.maNV = PYC.maNV ";
             var list = db.BangThongTinTatCaHoaDons.SqlQuery(query).ToList();
-            if (search != null) {
-                ViewBag.Current_search = search.ToString();
-                list = list.Where(x => x.maHoaDon.StartsWith(ViewBag.Current_search)).ToList();
+            if (search != null)
+            {
+                ViewBag.Current_search = search;
+                query = query + " and maHoaDon like N'%" + search + "%'";
+                list = db.BangThongTinTatCaHoaDons.SqlQuery(query).ToList();
             }
             if (sortBy == "maHoaDon")
             {
-                ViewBag.Current_sortBy = "maHoaDon";
-                list = list.OrderBy(x => x.maHoaDon).ToList();
+                ViewBag.Current_sortBy = sortBy;
+                list = db.BangThongTinTatCaHoaDons.SqlQuery(query + " order by maHoaDon").ToList();
             }
             if (sortBy == "NgayMuon")
             {
                 ViewBag.Current_sortBy = "NgayMuon";
-                list = list.OrderBy(x => x.NgayMuon).ToList();
+                list = db.BangThongTinTatCaHoaDons.SqlQuery(query + " order by NgayMuon ").ToList();
             }
             return View(list.ToPagedList(page ?? 1, 5));
         }
@@ -51,21 +53,22 @@ namespace WebApplicationQL_TV.Controllers
                 "inner join TheThuVien TTV ON TTV.maThe = PYC.maThe " +
                 "inner join KhachHang KH ON KH.maThe = TTV.maThe " +
                 "inner join NhanVien NV ON NV.maNV = PYC.maNV where TrangThai = 0";
-            var list = db.BangThongTinTatCaHoaDons.SqlQuery(query).ToList();
+            List<BangThongTinTatCaHoaDon> list = db.BangThongTinTatCaHoaDons.SqlQuery(query).ToList();
             if (search != null)
             {
-                ViewBag.Current_search = search.ToString();
-                list = list.Where(x => x.maHoaDon.StartsWith(ViewBag.Current_search)).ToList();
+                ViewBag.Current_search = search;
+                query = query + " and maHoaDon like N'%"+search+"%'"; 
+                list = db.BangThongTinTatCaHoaDons.SqlQuery(query).ToList();
             }
             if (sortBy == "maHoaDon")
             {
                 ViewBag.Current_sortBy = sortBy;
-                list = list.OrderBy(x => x.maHoaDon).ToList();
+                list = db.BangThongTinTatCaHoaDons.SqlQuery(query + " order by maHoaDon").ToList();
             }
             if (sortBy == "NgayMuon")
             {
                 ViewBag.Current_sortBy = "NgayMuon";
-                list = list.OrderBy(x => x.NgayMuon).ToList();
+                list = db.BangThongTinTatCaHoaDons.SqlQuery(query + " order by NgayMuon ").ToList();
             }
             return View(list.ToPagedList(page ?? 1, 5));
         }

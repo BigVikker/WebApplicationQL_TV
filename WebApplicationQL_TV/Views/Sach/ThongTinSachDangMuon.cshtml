@@ -5,7 +5,7 @@
 <h1 class="media-middle">Thông Tin Sách Đang Mượn</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { @class="btn btn-default" })
 </p>
 @using (Html.BeginForm("ThongTinSach", "Sach", FormMethod.Get))
 {

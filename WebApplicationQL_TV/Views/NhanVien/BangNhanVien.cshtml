@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApplicationQL_TV.Models.NhanVien>
+
+@{
+    ViewBag.Title = "BangNhanVien";
+}
+
+<h2>BangNhanVien</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BoPhan.tenBP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tenNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Luong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoPhan.tenBP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenNV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaySinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GioiTinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Luong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.maNV }) |
+            @Html.ActionLink("Details", "Details", new { id=item.maNV }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.maNV })
+        </td>
+    </tr>
+}
+
+</table>

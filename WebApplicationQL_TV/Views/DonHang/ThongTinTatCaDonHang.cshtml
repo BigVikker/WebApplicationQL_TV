@@ -15,7 +15,7 @@
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { @class = "btn btn default" })
 </p>
 <div>
     @using (Html.BeginForm("ThongTinTatCaDonHang", "DonHang", FormMethod.Get))

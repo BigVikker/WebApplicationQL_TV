@@ -31,7 +31,6 @@ namespace WebApplicationQL_TV.Controllers
                         return View(db.Saches.Where(x => x.tenSach.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 5));
                     }
             }
-
         }
         
         public ActionResult Create()
@@ -71,6 +70,12 @@ namespace WebApplicationQL_TV.Controllers
             Model1 db = new Model1();
             Sach sach = db.Saches.Find(id);
             return View(sach);
+        }
+        public ActionResult BangSach()
+        {
+            Model1 db = new Model1();
+            var list = db.Saches.SqlQuery("exec BangSach").ToList();
+            return View(list);
         }
         [HttpPost, ActionName("Create")]
         public ActionResult CreateConFirm(Sach sach)

@@ -8,7 +8,7 @@
 <h2 ><strong>Bảng Thông Tin Tất Cả Nhân Viên Đang Được Quản Lý</strong></h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { @class = "btn btn default" })
 </p>
 
 @using (Html.BeginForm("ThongTinNhanVien", "NhanVien", FormMethod.Get))

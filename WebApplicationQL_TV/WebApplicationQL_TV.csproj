@@ -218,6 +218,8 @@
     <Content Include="Views\DonHang\Delete.cshtml" />
     <Content Include="Views\DonHang\Details.cshtml" />
     <Content Include="Views\DonHang\Edit.cshtml" />
+    <Content Include="Views\NhanVien\BangNhanVien.cshtml" />
+    <Content Include="Views\Sach\BangSach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,21 +14,26 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult ThongTinNhanVien(int? page, string search, string sortBy)
         {
             Model1 db = new Model1();
-            List<NhanVien> list = db.NhanViens.ToList();
+            var query = "select * from nhanVien ";
+            List<NhanVien> list = db.NhanViens.SqlQuery(query).ToList();
             if (search != null)
             {
                 ViewBag.Current_search = search;
-                list = list.Where(x => x.maNV.StartsWith(search)).ToList();
+                query = query + " where maNV like N'%"+search+"%'";
+                list = db.NhanViens.SqlQuery(query).ToList();
             }
             if (sortBy == "maNV")
             {
                 ViewBag.Current_sortBy = sortBy;
-                list = list.OrderBy(x => x.maNV).ToList();
+                query = query + " order by maNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
+
             }
             if (sortBy == "tenNV")
             {
                 ViewBag.Current_sortBy = sortBy;
-                list = list.OrderBy(x => x.tenNV).ToList();
+                query = query + " order by tenNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
             }
             return View(list.ToPagedList(page ?? 1, 5));
         }
@@ -37,22 +42,35 @@ namespace WebApplicationQL_TV.Controllers
             Model1 db = new Model1();
             List<NhanVien> list = db.NhanViens.SqlQuery("Select * from NhanVien where maNV not in " +
                 "(select maNV  from PhieuYeuCau)").ToList();
-            if (sortBy == "maNV")
-            {
-                ViewBag.Current_sortBy = sortBy;
-                list = list.OrderBy(x => x.maNV).ToList();
-            }
+
+            var query = "Select * from NhanVien where maNV not in " +
+                "(select maNV  from PhieuYeuCau)";
             if (search != null)
             {
                 ViewBag.Current_search = search;
-                list = list.Where(x => x.maNV.StartsWith(search)).ToList();
+                query = query + " and maNV like N'%" + search + "%'";
+                list = db.NhanViens.SqlQuery(query).ToList();
+            }
+            if (sortBy == "maNV")
+            {
+                ViewBag.Current_sortBy = sortBy;
+                query = query + " order by maNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
+
             }
             if (sortBy == "tenNV")
             {
                 ViewBag.Current_sortBy = sortBy;
-                list = list.OrderBy(x => x.tenNV).ToList();
+                query = query + " order by tenNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
             }
             return View(list.ToPagedList(page ?? 1, 5));
+        }
+        public ActionResult BangNhanVien()
+        {
+            Model1 db = new Model1();
+            var list = db.NhanViens.SqlQuery("exec bangNhanVien").ToList();
+            return View(list);
         }
         public ActionResult Create()
         {
