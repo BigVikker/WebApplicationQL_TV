@@ -7,19 +7,18 @@
 
 
 
-<p>
-    @Html.ActionLink("Create New", "Create", new { @class="btn btn-default" })
-</p>
 
 <body>
     <div style="font-size:30px"><strong>Bảng Thông Tin Chi Tiết Về Các Sách Đang Được Quản Lý </strong></div>
     <br />
-
+    <p>
+        @Html.ActionLink("Create New", "Create", new { @class = "btn btn-default" })
+    </p>
     <br />
     <div class="card-body">
         <table class="table table-bordered" data-page-size="5">
             <thead>
-                @using (Html.BeginForm("ThongTinSach", "Sach", FormMethod.Get  ))
+                @using (Html.BeginForm("ThongTinSach", "Sach", FormMethod.Get))
                 {
                     <tr>Tìm Kiếm Theo Đầu Sách : </tr>
                     <input type="text" name="search" value="@ViewBag.Current_search" placeholder="ten sach can tim" />
@@ -29,7 +28,7 @@
                         <option value="maSach">maSach</option>
                         <option value="tenSach">tenSach</option>
                     </select>
-                    <input class="btn btn-default"  type="submit" value="Tìm Kiếm" />
+                    <input class="btn btn-default" type="submit" value="Tìm Kiếm" />
                 }
 
             </thead>
@@ -122,7 +121,7 @@
                 <tr>
                     Tổng số sách đang được quán lý : @soSach
                 </tr>
-                @Html.PagedListPager(Model, page => Url.Action("ThongTinSach", "Sach", new { page , sortBy = ViewBag.Current_sortBy , search = ViewBag.Current_search}  ))
+                @Html.PagedListPager(Model, page => Url.Action("ThongTinSach", "Sach", new { page, sortBy = ViewBag.Current_sortBy, search = ViewBag.Current_search }))
             }
         </thead>
     </div>

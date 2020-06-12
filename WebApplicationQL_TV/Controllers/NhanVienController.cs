@@ -81,8 +81,9 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult CreateConFirm(NhanVien nhanVien)
         {
             Model1 db = new Model1();
-            var NhanVien_Found = db.NhanViens.SqlQuery("select * from NhanVien Where maNV = '{0}'", nhanVien.maNV).SingleOrDefault();
-            if (NhanVien_Found != null) return RedirectToAction("ThongTinNhanVien");
+            var NhanVien_Found = db.NhanViens.SqlQuery("select * from " +
+                " NhanVien Where maNV = '"+nhanVien.maNV+"'").SingleOrDefault();
+            if (NhanVien_Found != null) return RedirectToAction("Create");
             else
             {
                 db.NhanViens.Add(nhanVien);

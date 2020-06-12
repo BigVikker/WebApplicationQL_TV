@@ -82,17 +82,17 @@ namespace WebApplicationQL_TV.Controllers
             Model1 db = new Model1();
             
             var obj_Found = db.PhieuYeuCaus.Find(thongTinHoaDon.maPhieuYeuCau);
-            if (obj_Found != null) return View();
+            if (obj_Found != null) return Redirect("Create");
             var obj_Found_1 = db.Saches.Find(thongTinHoaDon.maSach);
-            if (obj_Found_1 == null) return View();
+            if (obj_Found_1 == null) return Redirect("Create");
             var obj_Found_2 = db.TheThuViens.Find(thongTinHoaDon.maThe);
-            if (obj_Found_2 == null) return View();
+            if (obj_Found_2 == null) return Redirect("Create");
             var obj_Found_3 = db.NhanViens.Find(thongTinHoaDon.maNV);
-            if (obj_Found_3 == null) return View();
+            if (obj_Found_3 == null) return Redirect("Create");
             var obj_Found_4 = db.HoaDonMuons.Find(thongTinHoaDon.maHoaDon);
-            if (obj_Found_4 != null) return View();
+            if (obj_Found_4 != null) return Redirect("Create");
             var obj_Found_5 = db.TheThuViens.Find(thongTinHoaDon.maThuVien);
-            if (obj_Found_5 != null) return View();
+            if (obj_Found_5 != null) return Redirect("Create");
 
             db.Database.ExecuteSqlCommand("insert into PhieuYeuCau(maPhieuYeuCau,maThe,maNV,maThuVien) " +
                 "values ( '" + thongTinHoaDon.maPhieuYeuCau + "' ,'" + thongTinHoaDon.maThe + "','"
@@ -132,7 +132,7 @@ namespace WebApplicationQL_TV.Controllers
             var DonHang_Found = db.HoaDonMuons
                 .SqlQuery("select * from HoaDonMuon where TrangThai = 1 " +
                 " and maHoaDon = '" + id + "'").SingleOrDefault();
-            if (DonHang_Found == null) return RedirectToAction("ThongTinTatCaDonHang");
+            if (DonHang_Found == null) return RedirectToAction("Delete");
             else
             {
                 db.Database.ExecuteSqlCommand("delete from YeuCauMuon where " +
@@ -183,6 +183,11 @@ namespace WebApplicationQL_TV.Controllers
             Model1 db = new Model1();
             var obj_effected = db.BangThongTinTatCaHoaDons.Find(obj.maHoaDon);
             obj_effected.TrangThai = obj.TrangThai;
+            var trangThai = 0;
+            if (obj_effected.TrangThai == true) trangThai = 1;
+            db.Database.ExecuteSqlCommand("update HoaDonMuon set TrangThai =" +
+                " {0} where maHoaDon = '{1}' ",trangThai,obj_effected.maHoaDon);
+            return RedirectToAction("BangThongTinTatCaHoaDon");
             if (TryUpdateModel(obj))
             {
                 try {

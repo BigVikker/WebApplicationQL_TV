@@ -18,19 +18,26 @@ namespace WebApplicationQL_TV.Controllers
             else sortBy = ViewBag.Current_sortBy;
             if (search != null) ViewBag.Current_search = search;
             else search = ViewBag.Current_search;
+            
             Model1 db = new Model1();
-            switch (sortBy)
+            var query = "Select * from Sach";
+            var list = db.Saches.SqlQuery(query).ToList();
+            if(search != null )
             {
-                case "maSach":
-                    var list = db.Saches.OrderBy(x => x.maSach).Where(x => x.tenSach.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 5);
-                    return View(list);
-                case "tenSach":
-                    return View(db.Saches.OrderBy(x => x.tenSach).Where(x => x.tenSach.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 5));
-                default:
-                    {
-                        return View(db.Saches.Where(x => x.tenSach.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 5));
-                    }
+                query = query + " where maSach = '"+search+"'";
+                list = db.Saches.SqlQuery(query).ToList();
             }
+            if(sortBy == "maSach")
+            {
+                query = query + " order by maSach";
+                list = db.Saches.SqlQuery(query).ToList();
+            }
+            if (sortBy == "tenSach")
+            {
+                query = query + " order by tenSach";
+                list = db.Saches.SqlQuery(query).ToList();
+            }
+            return View(list.ToPagedList(page ?? 1,5));
         }
         
         public ActionResult Create()
