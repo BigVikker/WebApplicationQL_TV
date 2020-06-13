@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DauSachVaSachController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
@@ -162,6 +163,25 @@
     <Compile Include="Models\TheThuVien.cs" />
     <Compile Include="Models\ThuVien.cs" />
     <Compile Include="Models\YeuCauMuon.cs" />
+    <Compile Include="Model_new\BangDauSachVaSach.cs" />
+    <Compile Include="Model_new\BangThongTinTatCaHoaDon.cs" />
+    <Compile Include="Model_new\BoPhan.cs" />
+    <Compile Include="Model_new\CanhCao.cs" />
+    <Compile Include="Model_new\DauSach.cs" />
+    <Compile Include="Model_new\HoaDonMuon.cs" />
+    <Compile Include="Model_new\KhachHang.cs" />
+    <Compile Include="Model_new\KhoSach.cs" />
+    <Compile Include="Model_new\LoaiSach.cs" />
+    <Compile Include="Model_new\Model2.cs" />
+    <Compile Include="Model_new\NgonNgu.cs" />
+    <Compile Include="Model_new\NhanVien.cs" />
+    <Compile Include="Model_new\NhaXuatBan.cs" />
+    <Compile Include="Model_new\PhieuYeuCau.cs" />
+    <Compile Include="Model_new\Sach.cs" />
+    <Compile Include="Model_new\TacGia.cs" />
+    <Compile Include="Model_new\TheThuVien.cs" />
+    <Compile Include="Model_new\ThuVien.cs" />
+    <Compile Include="Model_new\YeuCauMuon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,7 +240,16 @@
     <Content Include="Views\DonHang\Details.cshtml" />
     <Content Include="Views\DonHang\Edit.cshtml" />
     <Content Include="Views\NhanVien\BangNhanVien.cshtml" />
-    <Content Include="Views\Sach\BangSach.cshtml" />
+    <Content Include="Views\DonHang\ThongTinDonHangQuaHan.cshtml" />
+    <Content Include="Views\NhanVien\ThongTinNhanVienThuocBoPhan001.cshtml" />
+    <Content Include="Views\NhanVien\ThongTinNhanVienThuocBoPhan002.cshtml" />
+    <Content Include="Views\NhanVien\ThongTinNhanVienThuocBoPhan003.cshtml" />
+    <Content Include="Views\DauSachVaSach\TatCaDauSachVaSach.cshtml" />
+    <Content Include="Views\DauSachVaSach\Details.cshtml" />
+    <Content Include="Views\DauSachVaSach\Edit.cshtml" />
+    <Content Include="Views\DauSachVaSach\Create.cshtml" />
+    <Content Include="Views\DauSachVaSach\Delete.cshtml" />
+    <Content Include="Views\DauSachVaSach\BangDauSach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

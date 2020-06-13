@@ -1,4 +1,4 @@
-﻿@model WebApplicationQL_TV.Models.Sach
+﻿@model WebApplicationQL_TV.Model_new.Sach
 
 @{
     ViewBag.Title = "Delete";
@@ -11,6 +11,13 @@
     <h4>Sach</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.maSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maSach)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.tenSach)
         </dt>
@@ -52,14 +59,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.maNgonNgu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.maNgonNgu)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.maLoaiSach)
         </dt>
 
@@ -68,19 +67,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.maNhaXuatBan)
+            @Html.DisplayNameFor(model => model.maDauSach)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.maNhaXuatBan)
+            @Html.DisplayFor(model => model.maDauSach)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.maTacGia)
+            @Html.DisplayNameFor(model => model.maKhoSach)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.maTacGia)
+            @Html.DisplayFor(model => model.maKhoSach)
         </dd>
 
     </dl>

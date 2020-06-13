@@ -1,4 +1,4 @@
-﻿@model WebApplicationQL_TV.Models.BangThongTinTatCaHoaDon
+﻿@model WebApplicationQL_TV.Model_new.BangThongTinTatCaHoaDon
 
 @{
     ViewBag.Title = "Delete";
@@ -11,6 +11,12 @@
     <h4>BangThongTinTatCaHoaDon</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.maHoaDon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maHoaDon)
         <dt>
             @Html.DisplayNameFor(model => model.maPhieuYeuCau)
         </dt>
@@ -36,11 +42,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgayMuon)
+            @Html.DisplayNameFor(model => model.NgayMuonTra)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NgayMuon)
+            @Html.DisplayFor(model => model.NgayMuonTra)
         </dd>
 
         <dt>

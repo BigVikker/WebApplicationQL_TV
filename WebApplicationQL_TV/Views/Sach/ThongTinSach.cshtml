@@ -1,6 +1,6 @@
-﻿@model IPagedList<WebApplicationQL_TV.Models.Sach>
+﻿@model IPagedList<WebApplicationQL_TV.Model_new.Sach>
 @using PagedList;
-@using WebApplicationQL_TV.Models;
+@using WebApplicationQL_TV.Model_new;
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -53,17 +53,15 @@
                     <th>
                         @Html.DisplayNameFor(model => model.First().ghiChu)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.First().maNgonNgu)
-                    </th>
+
                     <th>
                         @Html.DisplayNameFor(model => model.First().maLoaiSach)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().maNhaXuatBan)
+                        @Html.DisplayNameFor(model => model.First().maKhoSach)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().maTacGia)
+                        @Html.DisplayNameFor(model => model.First().maDauSach)
                     </th>
                     <th>
                         Cac Dich Vu
@@ -94,16 +92,13 @@
                             @Html.DisplayFor(modelItem => item.ghiChu)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.maNgonNgu)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.maLoaiSach)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.maNhaXuatBan)
+                            @Html.DisplayFor(modelItem => item.maKhoSach)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.maTacGia)
+                            @Html.DisplayFor(modelItem => item.maDauSach)
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.maSach }) |
@@ -114,15 +109,7 @@
                 }
             </tbody>
         </table>
-        <thead>
-            @using (var db = new Model1())
-            {
-                var soSach = db.Saches.Count();
-                <tr>
-                    Tổng số sách đang được quán lý : @soSach
-                </tr>
-                @Html.PagedListPager(Model, page => Url.Action("ThongTinSach", "Sach", new { page, sortBy = ViewBag.Current_sortBy, search = ViewBag.Current_search }))
-            }
-        </thead>
+        @Html.PagedListPager(Model, page => Url.Action("ThongTinSach", "Sach", new { page, sortBy = ViewBag.Current_sortBy, search = ViewBag.Current_search }))
+
     </div>
 </body>

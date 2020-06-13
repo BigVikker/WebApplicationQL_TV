@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
-using WebApplicationQL_TV.Models;
+using WebApplicationQL_TV.Model_new;
 using PagedList.Mvc;
 
 namespace WebApplicationQL_TV.Controllers
@@ -19,7 +19,7 @@ namespace WebApplicationQL_TV.Controllers
             if (search != null) ViewBag.Current_search = search;
             else search = ViewBag.Current_search;
             
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             var query = "Select * from Sach";
             var list = db.Saches.SqlQuery(query).ToList();
             if(search != null )
@@ -47,7 +47,7 @@ namespace WebApplicationQL_TV.Controllers
        
         public ActionResult ThongTinSachDangMuon(int? page)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             string query = "select * from Sach where "
                 +"maSach not in (select maSach from YeuCauMuon) or maSach in"
                 +" (select maSach from YeuCauMuon where maPhieuYeuCau in "
@@ -59,7 +59,7 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult Details(string id)
         {
             if (id == null) return RedirectToAction("ThongTinSach");
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             Sach sach_have_been_found = db.Saches.Find(id);
             return View(sach_have_been_found);
         }
@@ -67,27 +67,27 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult Edit(string id)
         {
             if (id == null) return RedirectToAction("ThongTinSach"); 
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             Sach sach = db.Saches.Find(id);
             return View(sach);
         }
         public ActionResult Delete(string id)
         {
             if (id == null) return RedirectToAction("ThongTinSach");
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             Sach sach = db.Saches.Find(id);
             return View(sach);
         }
         public ActionResult BangSach()
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             var list = db.Saches.SqlQuery("exec BangSach").ToList();
             return View(list);
         }
         [HttpPost, ActionName("Create")]
         public ActionResult CreateConFirm(Sach sach)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             var sach_finder = db.Saches.Find(sach.maSach);
             if (sach_finder != null)
             {
@@ -106,7 +106,7 @@ namespace WebApplicationQL_TV.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             Sach delete_sach = db.Saches.SqlQuery("select * from Sach where ( maSach in " +
                 "(select maSach from YeuCauMuon where maPhieuYeuCau in " +
                 "(select maPhieuYeuCau from PhieuYeuCau where maPhieuYeuCau in " +
@@ -125,7 +125,7 @@ namespace WebApplicationQL_TV.Controllers
         [HttpPost, ActionName("Edit")]
         public ActionResult Edit(Sach sach)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             Sach editor_Sach = db.Saches.Find(sach.maSach);
             editor_Sach.ghiChu = sach.ghiChu;
             editor_Sach.maLoaiSach = sach.maLoaiSach;

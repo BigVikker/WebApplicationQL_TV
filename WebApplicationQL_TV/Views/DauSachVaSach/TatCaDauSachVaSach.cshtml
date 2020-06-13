@@ -1,0 +1,126 @@
+﻿@model IPagedList<WebApplicationQL_TV.Model_new.BangDauSachVaSach>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "TatCaDauSachVaSach";
+}
+
+<h2>TatCaDauSachVaSach</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("TatCaDauSachVaSach", "DauSachVaSach", FormMethod.Get))
+{
+    <tr>Tìm Kiếm Theo Mã Dau Saches : </tr>
+    <input type="text" name="search" value="@ViewBag.Current_search" />
+    <tr>Sắp Xếp Theo : </tr>
+    <select name="sortBy">
+        <option value="@ViewBag.Current_sortBy">@ViewBag.Current_sortBy</option>
+        <option value="maDauSach">maDauSach</option>
+        <option value="tenDauSach">tenDauSach</option>
+    </select>
+    <input class="btn btn-default" type="submit" value="Tìm Kiếm" />
+}
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maDauSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().tenDauSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maTacGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maNgonNgu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maNhaXuatBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().tenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().soTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().namXuatBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().giaSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ghiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maLoaiSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maKhoSach)
+        </th>
+        <th>
+            Các Chức Năng
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.maDauSach)
+    </td>
+
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.tenDauSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maTacGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maNgonNgu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maNhaXuatBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tenSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.soTrang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.namXuatBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.giaSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ghiChu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maLoaiSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maKhoSach)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.maDauSach }) |
+        @Html.ActionLink("Details", "Details", new { id = item.maDauSach }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.maDauSach })
+    </td>
+</tr>
+    }
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("TatCaDauSachVaSach", "DauSachVaSach", new { page, sortBy = ViewBag.Current_sortBy, search = ViewBag.Current_search }))
+

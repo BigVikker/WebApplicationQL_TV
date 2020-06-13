@@ -1,0 +1,55 @@
+﻿@model WebApplicationQL_TV.Model_new.DauSach
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DauSach</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgonNgu.ngonNgu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgonNgu.ngonNgu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaXuatBan.tenNhaXuatBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaXuatBan.tenNhaXuatBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TacGia.tenTacGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TacGia.tenTacGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenDauSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenDauSach)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure you want to delete ?')"   /> 
+        </div>
+    }
+</div>

@@ -1,4 +1,4 @@
-﻿@model WebApplicationQL_TV.Models.Sach
+﻿@model WebApplicationQL_TV.Model_new.Sach
 
 @{
     ViewBag.Title = "Create";
@@ -63,14 +63,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.maNgonNgu, "maNgonNgu", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                @Html.EditorFor(model => model.maNgonNgu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.maNgonNgu, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
         <div class="form-group">
             @Html.LabelFor(model => model.maLoaiSach, "maLoaiSach", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -81,18 +74,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.maNhaXuatBan, "maNhaXuatBan", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.maDauSach, "maDauSach", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.maNhaXuatBan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.maNhaXuatBan, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.maDauSach, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.maDauSach, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.maTacGia, "maTacGia", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.maKhoSach, "maKhoSach", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ghiChu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.maTacGia, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.maKhoSach, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.maKhoSach, "", new { @class = "text-danger" })
             </div>
         </div>
 

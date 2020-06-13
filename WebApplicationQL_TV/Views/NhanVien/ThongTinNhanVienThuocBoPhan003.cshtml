@@ -1,0 +1,88 @@
+﻿@model IPagedList<WebApplicationQL_TV.Model_new.NhanVien>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ThongTinNhanVienThuocBoPhan003";
+}
+
+<h2>ThongTinNhanVienThuocBoPhan003</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { @class = "btn btn-default" })
+</p>
+
+
+@using (Html.BeginForm("ThongTinNhanVienThuocBoPhan003", "NhanVien", FormMethod.Get))
+{
+    <tr>Tìm Kiếm Theo Mã Nhân Viên : </tr>
+    <input type="text" name="search" value="@ViewBag.Current_search" />
+    <tr>Sắp Xếp Theo : </tr>
+    <select name="sortBy">
+        <option value="@ViewBag.Current_sortBy">@ViewBag.Current_sortBy</option>
+        <option value="maNV">maNV</option>
+        <option value="tenNV">tenNV</option>
+    </select>
+    <input class="btn btn-default" type="submit" value="Tìm Kiếm" />
+}
+<table class="table table-bordered">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().BoPhan.tenBP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().maNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().tenNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ngaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().GioiTinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Luong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SDT)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoPhan.tenBP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaySinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Luong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.maNV }) |
+                @Html.ActionLink("Details", "Details", new { id = item.maNV }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.maNV })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("ThongTinNhanVienThuocBoPhan003", "NhanVien", new { page, sortBy = ViewBag.Current_sortBy, search = ViewBag.Current_search }))
+

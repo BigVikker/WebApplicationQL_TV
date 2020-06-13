@@ -1,0 +1,49 @@
+﻿@model WebApplicationQL_TV.Model_new.DauSach
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DauSach</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgonNgu.ngonNgu1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgonNgu.ngonNgu1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaXuatBan.tenNhaXuatBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaXuatBan.tenNhaXuatBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TacGia.tenTacGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TacGia.tenTacGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenDauSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenDauSach)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maDauSach })
+</p>

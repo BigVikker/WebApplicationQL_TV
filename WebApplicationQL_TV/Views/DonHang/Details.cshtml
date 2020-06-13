@@ -1,4 +1,4 @@
-﻿@model WebApplicationQL_TV.Models.BangThongTinTatCaHoaDon
+﻿@model WebApplicationQL_TV.Model_new.BangThongTinTatCaHoaDon
 
 @{
     ViewBag.Title = "Details";
@@ -35,11 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgayMuon)
+            @Html.DisplayNameFor(model => model.NgayMuonTra)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NgayMuon)
+            @Html.DisplayFor(model => model.NgayMuonTra)
         </dd>
 
         <dt>
@@ -96,6 +96,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.maSach)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.maDauSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maDauSach)
         </dd>
 
         <dt>

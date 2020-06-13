@@ -1,6 +1,6 @@
-﻿@model IPagedList<WebApplicationQL_TV.Models.BangThongTinTatCaHoaDon>
+﻿@model IPagedList<WebApplicationQL_TV.Model_new.BangThongTinTatCaHoaDon>
 @using PagedList;
-@using WebApplicationQL_TV.Models;
+@using WebApplicationQL_TV.Model_new;
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -40,7 +40,7 @@
             @Html.DisplayNameFor(model => model.First().maHoaDon)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().NgayMuon)
+            @Html.DisplayNameFor(model => model.First().NgayMuonTra)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.First().tenThuVien)
@@ -74,7 +74,7 @@
                 @Html.DisplayFor(modelItem => item.TrangThai)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NgayMuon)
+                @Html.DisplayFor(modelItem => item.NgayMuonTra)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.tenThuVien)

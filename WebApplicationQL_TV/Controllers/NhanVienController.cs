@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using PagedList;
 using System.Web.Mvc;
-using WebApplicationQL_TV.Models;
+using WebApplicationQL_TV.Model_new;
 
 namespace WebApplicationQL_TV.Controllers
 {
@@ -13,7 +13,7 @@ namespace WebApplicationQL_TV.Controllers
         // GET: NhanVien
         public ActionResult ThongTinNhanVien(int? page, string search, string sortBy)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             var query = "select * from nhanVien ";
             List<NhanVien> list = db.NhanViens.SqlQuery(query).ToList();
             if (search != null)
@@ -37,9 +37,93 @@ namespace WebApplicationQL_TV.Controllers
             }
             return View(list.ToPagedList(page ?? 1, 5));
         }
+        public ActionResult ThongTinNhanVienThuocBoPhan001(int? page, string search, string sortBy)
+        {
+            Model2 db = new Model2();
+            var query = "Select * from NhanVien where maBP = 'BP001' ";
+
+            List<NhanVien> list = db.NhanViens.SqlQuery(query).ToList();
+
+            if (search != null)
+            {
+                ViewBag.Current_search = search;
+                query = query + " and maNV like N'%" + search + "%'";
+                list = db.NhanViens.SqlQuery(query).ToList();
+            }
+            if (sortBy == "maNV")
+            {
+                ViewBag.Current_sortBy = sortBy;
+                query = query + " order by maNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
+
+            }
+            if (sortBy == "tenNV")
+            {
+                ViewBag.Current_sortBy = sortBy;
+                query = query + " order by tenNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
+            }
+            return View(list.ToPagedList(page ?? 1, 5));
+        }
+        public ActionResult ThongTinNhanVienThuocBoPhan002(int? page, string search, string sortBy)
+        {
+            Model2 db = new Model2();
+            var query = "Select * from NhanVien where maBP = 'BP002' ";
+
+            List<NhanVien> list = db.NhanViens.SqlQuery(query).ToList();
+
+            if (search != null)
+            {
+                ViewBag.Current_search = search;
+                query = query + " and maNV like N'%" + search + "%'";
+                list = db.NhanViens.SqlQuery(query).ToList();
+            }
+            if (sortBy == "maNV")
+            {
+                ViewBag.Current_sortBy = sortBy;
+                query = query + " order by maNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
+
+            }
+            if (sortBy == "tenNV")
+            {
+                ViewBag.Current_sortBy = sortBy;
+                query = query + " order by tenNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
+            }
+            return View(list.ToPagedList(page ?? 1, 5));
+        }
+        public ActionResult ThongTinNhanVienThuocBoPhan003(int? page, string search, string sortBy)
+        {
+            Model2 db = new Model2();
+            var query = "Select * from NhanVien where maBP = 'BP003' ";
+
+            List<NhanVien> list = db.NhanViens.SqlQuery(query).ToList();
+
+            if (search != null)
+            {
+                ViewBag.Current_search = search;
+                query = query + " and maNV like N'%" + search + "%'";
+                list = db.NhanViens.SqlQuery(query).ToList();
+            }
+            if (sortBy == "maNV")
+            {
+                ViewBag.Current_sortBy = sortBy;
+                query = query + " order by maNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
+
+            }
+            if (sortBy == "tenNV")
+            {
+                ViewBag.Current_sortBy = sortBy;
+                query = query + " order by tenNV";
+                list = db.NhanViens.SqlQuery(query).ToList();
+            }
+            return View(list.ToPagedList(page ?? 1, 5));
+        }
         public ActionResult ThongTinNhanVienChuaVietDonHang(int? page, string search, string sortBy)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             List<NhanVien> list = db.NhanViens.SqlQuery("Select * from NhanVien where maNV not in " +
                 "(select maNV  from PhieuYeuCau)").ToList();
 
@@ -68,7 +152,7 @@ namespace WebApplicationQL_TV.Controllers
         }
         public ActionResult BangNhanVien()
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             var list = db.NhanViens.SqlQuery("exec bangNhanVien").ToList();
             return View(list);
         }
@@ -80,7 +164,7 @@ namespace WebApplicationQL_TV.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateConFirm(NhanVien nhanVien)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             var NhanVien_Found = db.NhanViens.SqlQuery("select * from " +
                 " NhanVien Where maNV = '"+nhanVien.maNV+"'").SingleOrDefault();
             if (NhanVien_Found != null) return RedirectToAction("Create");
@@ -95,7 +179,7 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult Details(string id)
         {
             if (id == null) return RedirectToAction("ThongTinNhanVien");
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             NhanVien obj_have_been_found = db.NhanViens.Find(id);
             return View(obj_have_been_found);
         }
@@ -103,14 +187,14 @@ namespace WebApplicationQL_TV.Controllers
         public ActionResult Edit(string id)
         {
             if (id == null) return RedirectToAction("ThongTinNhanVien");
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             NhanVien obj = db.NhanViens.Find(id);
             return View(obj);
         }
         public ActionResult Delete(string id)
         {
             if (id == null) return RedirectToAction("ThongTinNhanVien");
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             NhanVien obj = db.NhanViens.Find(id);
             return View(obj);
         }
@@ -119,7 +203,7 @@ namespace WebApplicationQL_TV.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             var NhanVien_found = db.NhanViens.SqlQuery("Select * from NhanVien where " +
                 "maNV not in (select maNV from PhieuYeuCau) and" +
                 " maNV = '"+id+"'").SingleOrDefault();
@@ -136,7 +220,7 @@ namespace WebApplicationQL_TV.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edits(string id)
         {
-            Model1 db = new Model1();
+            Model2 db = new Model2();
             NhanVien editor = db.NhanViens.Find(id);
             if (TryUpdateModel(editor))
             {
